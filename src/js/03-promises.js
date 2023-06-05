@@ -25,7 +25,11 @@ function handleSubmit(event) {
   let delayEl = parseInt(delay.value);
   let stepEl = parseInt(step.value);
   let amountEl = parseInt(amount.value);
-  if (delayEl > 0 || stepEl > 0 || amountEl > 0) {
+  if (stepEl < 0||delayEl<0) {
+
+    alert('Please put positive value')
+  }
+  else {
     for (let i = 0; i < amount.value; i++) {
       createPromise(i+1, delayEl)
         .then(({ position, delay }) => {
@@ -36,10 +40,6 @@ function handleSubmit(event) {
         });
       delayEl += stepEl;
     }
-  
-  }
-  else {
-    alert('Please put positive value')
   }
   formEl.reset();
 }
